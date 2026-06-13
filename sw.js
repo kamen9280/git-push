@@ -1,15 +1,15 @@
-const CACHE_NAME = "bookmark-mobile-pwa-v2";
+const CACHE_NAME = "bookmark-mobile-pwa-v3";
 const ASSETS = [
   "/",
   "/index.html",
   "/share.html",
   "/manifest.webmanifest",
-  "/assets/icon.svg",
-  "/src/app.js",
-  "/src/db.js",
-  "/src/security.js",
-  "/src/share.js",
-  "/src/styles.css"
+  "/icon.svg",
+  "/app.js",
+  "/db.js",
+  "/security.js",
+  "/share.js",
+  "/styles.css"
 ];
 
 self.addEventListener("install", (event) => {
@@ -20,7 +20,9 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+      .then((keys) =>
+        Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
+      )
   );
 });
 
